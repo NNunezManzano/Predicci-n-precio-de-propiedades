@@ -1,7 +1,20 @@
-FROM jupyter/scipy-notebook:6b49f3337709
+FROM python:3.9.13
 
-WORKDIR /app
+RUN apt-get update
 
-COPY a_predecir.csv /app/a_predecir.csv
+ENV PATH="/root/.local/bin:$PATH"
 
-COPY TP_individual_docker.ipynb /app/TP_individual_docker.ipynb
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN . $HOME/.poetry/env
+ENV PATH="${PATH}:/root/.poetry/bin"
+
+COPY pyproject.toml /properati/pyproject.toml
+
+WORKDIR /properati
+
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root
+
+COPY . /properati
+
+RUN poetry install --no-interaction

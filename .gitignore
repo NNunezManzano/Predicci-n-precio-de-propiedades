@@ -1,2 +1,4 @@
 ar_properties.csv
-venv/
+Soluciones/
+.ipynb_checkpoints/
+.devcontainer/
