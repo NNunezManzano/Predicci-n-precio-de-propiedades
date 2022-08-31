@@ -1,5 +1,7 @@
-ar_properties.csv
+archivos/ar_properties.csv
 Soluciones/
 .ipynb_checkpoints/
 .devcontainer/
 Comunas.xlsx
+notebook/.ipynb_checkpoints
+
